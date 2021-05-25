@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace CaesarEncryption
 {
     class Program
     {
+     /// <summary>
+     /// 
+     /// </summary>
+     /// <param name="args"></param>
         static void Main(string[] args)
         {
 
             int MenueAuswahl = SetStartMenue();
-
+            
             while (MenueAuswahl != 0)
             {
                 switch (MenueAuswahl)
@@ -27,9 +32,10 @@ namespace CaesarEncryption
                                Console.WriteLine("Bitte Positions Key eingeben: ");
                              int Key = Convert.ToInt32(Console.ReadLine());
 
-                        //Aufruf der Enyryption Methode
-                        Enryption(secretMessage, Key);
-                              string secret = Enryption(secretMessage, Key);
+                        //Aufruf der statischen Encryption Methode
+
+                        Encryption(secretMessage, Key);
+                              string secret = Encryption(secretMessage, Key);
                              Console.WriteLine(secret);
                        
                         //Aufruf der Menue Methode
@@ -38,16 +44,16 @@ namespace CaesarEncryption
 
                     case 2:
                         Console.WriteLine("Bitte den Verschlüsselten Text eingeben: ");
-                                string uklartext = Console.ReadLine();
-                                    uklartext = uklartext.ToUpper();
-                                      char[] usecretMessage = uklartext.ToCharArray();
+                                string vklartext = Console.ReadLine();
+                                    vklartext = vklartext.ToUpper();
+                                      char[] vsecretMessage = vklartext.ToCharArray();
                             Console.WriteLine("Bitte Positions Key eingeben: ");
-                        int ukKey = Convert.ToInt32(Console.ReadLine());
+                        int vKey = Convert.ToInt32(Console.ReadLine());
 
-                        //Aufruf der Decryption Methode
-                        Decryption(usecretMessage, ukKey);
-                                string Uksecret = Decryption(usecretMessage, ukKey);
-                             Console.WriteLine(Uksecret);
+                        //Aufruf der statischen Decryption Methode
+                        Decryption(vsecretMessage, vKey);
+                                string vksecret = Decryption(vsecretMessage, vKey);
+                             Console.WriteLine(vksecret);
                         //Aufruf der Menue Methode
                         MenueAuswahl = SetStartMenue();
                         break;
@@ -69,14 +75,15 @@ namespace CaesarEncryption
             }
         }
 
+     
 
-        /// <summary>
-        /// Enyryption
-        /// </summary>
-        /// <param name="secretMessage"></param>
-        /// <param name="key"></param>
-        /// <returns> verschluesselteNachricht </returns>
-        static string Enryption(char[] secretMessage, int key)
+      /// <summary>
+      /// 
+      /// </summary>
+      /// <param name="secretMessage"></param>
+      /// <param name="key"></param>
+      /// <returns></returns>
+        static public string Encryption(char[] secretMessage, int key)
         {
 
             char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
@@ -106,26 +113,26 @@ namespace CaesarEncryption
 
 
         /// <summary>
-        /// Decryption
+        /// 
         /// </summary>
-        /// <param name="secretMessage"></param>
-        /// <param name="key"></param>
-        /// <returns>verschluesselteNachricht</returns>
-        static string Decryption(char[] usecretMessage, int ukey)
+        /// <param name="vsecretMessage"></param>
+        /// <param name="vkey"></param>
+        /// <returns></returns>
+        static public string Decryption(char[] vsecretMessage, int vkey)
         {
 
             char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
             string verschluesselteNachricht = "";
 
 
-            for (int i = 0; i < usecretMessage.Length; i++)
+            for (int i = 0; i < vsecretMessage.Length; i++)
             {
-                char c = usecretMessage[i];
+                char c = vsecretMessage[i];
 
                 if (alphabet.Contains(c))
                 {
                     int position = Array.IndexOf(alphabet, c);
-                    int position_new = position - ukey;
+                    int position_new = position - vkey;
                     int rest = position_new % 26;
                     verschluesselteNachricht += alphabet[rest];
                 }
@@ -139,10 +146,10 @@ namespace CaesarEncryption
         }
 
         /// <summary>
-        /// Gibt keinen Wert zurück
+        /// 
         /// </summary>
         /// <returns></returns>
-        static int SetStartMenue()
+        static public int SetStartMenue()
         {
             Console.WriteLine("Willkommen zur Cäsar Verschlüsselung");
             Console.WriteLine("1. Für Text Verschlüsseln:");

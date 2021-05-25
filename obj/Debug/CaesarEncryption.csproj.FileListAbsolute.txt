@@ -1,0 +1,7 @@
+C:\youtube\fortgeschrittene\CaesarEncryption\bin\Debug\CaesarEncryption.exe.config
+C:\youtube\fortgeschrittene\CaesarEncryption\bin\Debug\CaesarEncryption.exe
+C:\youtube\fortgeschrittene\CaesarEncryption\bin\Debug\CaesarEncryption.pdb
+C:\youtube\fortgeschrittene\CaesarEncryption\obj\Debug\CaesarEncryption.csprojAssemblyReference.cache
+C:\youtube\fortgeschrittene\CaesarEncryption\obj\Debug\CaesarEncryption.csproj.CoreCompileInputs.cache
+C:\youtube\fortgeschrittene\CaesarEncryption\obj\Debug\CaesarEncryption.exe
+C:\youtube\fortgeschrittene\CaesarEncryption\obj\Debug\CaesarEncryption.pdb
